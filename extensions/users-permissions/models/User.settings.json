@@ -62,6 +62,11 @@
     "orders": {
       "via": "user",
       "collection": "order"
+    },
+    "products": {
+      "via": "user",
+      "plugin": "membership-light",
+      "collection": "product"
     }
   }
 }

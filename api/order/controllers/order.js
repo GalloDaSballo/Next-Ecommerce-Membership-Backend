@@ -52,7 +52,7 @@ module.exports = {
         }
 
         //Retrieve the real product here
-        const realProduct = await strapi.services.product.findOne({ id: product.id })
+        const realProduct = await strapi.plugins['strapi-plugin-membership-light'].services.product({ id: product.id })
         if(!realProduct){
             return res.status(404).send({error: "This product doesn't exist"})
         }
@@ -106,6 +106,10 @@ module.exports = {
             {
                 status: 'paid'
             })
+
+            await strapi.plugins['strapi-plugin-membership-light'].services.product
+                .unlockProduct(newOrder.user.id, newOrder.product.id);
+
 
             return newOrder
     
