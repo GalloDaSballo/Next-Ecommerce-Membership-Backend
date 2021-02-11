@@ -18,10 +18,11 @@
       "model": "order",
       "via": "products"
     },
-    "user": {
+    "users": {
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "products"
+      "collection": "user",
+      "via": "products",
+      "dominant": true
     },
     "name": {
       "type": "string"

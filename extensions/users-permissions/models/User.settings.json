@@ -64,7 +64,7 @@
       "collection": "order"
     },
     "products": {
-      "via": "user",
+      "via": "users",
       "plugin": "membership-light",
       "collection": "product"
     }
