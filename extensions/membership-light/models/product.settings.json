@@ -14,10 +14,6 @@
     "download": {
       "type": "string"
     },
-    "order": {
-      "model": "order",
-      "via": "products"
-    },
     "users": {
       "plugin": "users-permissions",
       "collection": "user",
@@ -47,6 +43,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "orders": {
+      "via": "product",
+      "collection": "order"
     }
   }
 }

@@ -52,7 +52,7 @@ module.exports = {
         }
 
         //Retrieve the real product here
-        const realProduct = await strapi.plugins['strapi-plugin-membership-light'].services.product({ id: product.id })
+        const realProduct = await strapi.plugins['membership-light'].services.product.findOne({ id: product.id })
         if(!realProduct){
             return res.status(404).send({error: "This product doesn't exist"})
         }
@@ -73,42 +73,46 @@ module.exports = {
                     quantity: 1,
                 },
             ],
-            customer_email: user.email, //Automatically added by Magic Link
+            customer_email: user.email, // Automatically added by Magic Link
             mode: "payment",
-            success_url: `${BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${BASE_URL}/success?token={CHECKOUT_SESSION_ID}`,
             cancel_url: BASE_URL,
         })
         
-        //TODO Create Temp Order here
+        // TODO Create Temp Order here
         const newOrder = await strapi.services.order.create({
             user: user.id,
             product: realProduct.id,
             total: realProduct.price,
             status: 'unpaid',
-            checkout_session: session.id
+            checkoutSession: session.id
         })
 
         return { id: session.id }
     },
     async confirm(ctx) {
-        const { checkout_session } = ctx.request.body
-        console.log("checkout_session", checkout_session)
+        const { checkoutSession } = ctx.request.body
+        console.log("checkoutSession", checkoutSession)
         const session = await stripe.checkout.sessions.retrieve(
-            checkout_session
+            checkoutSession
         )
         console.log("verify session", session)
 
         if(session.payment_status === "paid"){
+
+
             //Update order
             const newOrder = await strapi.services.order.update({
-                checkout_session
+                checkoutSession
             },
             {
                 status: 'paid'
             })
 
-            await strapi.plugins['strapi-plugin-membership-light'].services.product
+
+            await strapi.plugins['membership-light'].services.product
                 .unlockProduct(newOrder.user.id, newOrder.product.id);
+
 
 
             return newOrder

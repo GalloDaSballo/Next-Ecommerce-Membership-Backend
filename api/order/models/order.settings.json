@@ -21,7 +21,7 @@
     "total": {
       "type": "decimal"
     },
-    "checkout_session": {
+    "checkoutSession": {
       "type": "string"
     },
     "user": {
@@ -29,10 +29,10 @@
       "model": "user",
       "via": "orders"
     },
-    "products": {
-      "via": "order",
+    "product": {
       "plugin": "membership-light",
-      "collection": "product"
+      "model": "product",
+      "via": "orders"
     }
   }
 }
