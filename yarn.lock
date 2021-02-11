@@ -9808,10 +9808,10 @@ strapi-plugin-magic@^0.9.0:
     "@magic-sdk/admin" "^1.2.2"
     styled-components "^5.2.0"
 
-strapi-plugin-membership-light@^1.0.4:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-membership-light/-/strapi-plugin-membership-light-1.0.5.tgz#320cd751b5612d13e6df430d0dbd51f744b784d6"
-  integrity sha512-tLW+dO5YvUoi7OCfDhifk/yEJjKj+FevcKOetqkQ3SE+RjB/f963m1K4ytzakndle56CM9kIzCYgGEbqDEm5dA==
+strapi-plugin-membership-light@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-membership-light/-/strapi-plugin-membership-light-1.1.0.tgz#39008565f5ca5fe7f0ce06e8b3382523e7dcd143"
+  integrity sha512-rI1wlTZAvDD65SjlBdkSKXARn7EBDkHtbd+uHs20R0dZ8/GgHNiSKIvrfNNR35sQqz7L7hGIl6R5CXRr7iDRHg==
 
 strapi-plugin-upload@3.4.4:
   version "3.4.4"
