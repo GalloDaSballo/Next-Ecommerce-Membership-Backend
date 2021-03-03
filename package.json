@@ -7,14 +7,17 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "lint": "eslint"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "sqlite3": "^5.0.2"
+  },
   "dependencies": {
     "knex": "<0.20.0",
     "pg": "^8.5.1",
     "pg-connection-string": "^2.4.0",
-    "sqlite3": "^5.0.0",
     "strapi": "3.4.4",
     "strapi-admin": "3.4.4",
     "strapi-connector-bookshelf": "3.4.4",
