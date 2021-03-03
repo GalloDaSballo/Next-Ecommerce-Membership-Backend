@@ -96,11 +96,8 @@ module.exports = {
         const session = await stripe.checkout.sessions.retrieve(
             checkoutSession
         )
-        console.log("verify session", session)
 
         if(session.payment_status === "paid"){
-
-
             //Update order
             const newOrder = await strapi.services.order.update({
                 checkoutSession
@@ -109,11 +106,8 @@ module.exports = {
                 status: 'paid'
             })
 
-
             await strapi.plugins['membership-light'].services.product
                 .unlockProduct(newOrder.user.id, newOrder.product.id);
-
-
 
             return newOrder
     
